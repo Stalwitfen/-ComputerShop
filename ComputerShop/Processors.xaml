@@ -9,7 +9,26 @@
       Title="Processors">
 
     <Grid>
-        <ListView Name="LViewProcesors" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox x:Name="tb_Search" Grid.Row="0" Style="{StaticResource TextBoxStyle}" Margin="20, 15" TextChanged="Tb_Search_TextChanged"/>
+        <WrapPanel Grid.Row="1">
+            <Label Foreground="#B7D6D5" FontSize="16px" Margin="5">Сортировать по: </Label>
+            <Button x:Name="btn_OrderByName" Width="100px" Margin="5" Click="Btn_OrderByName_Click">Названию</Button>
+            <Button x:Name="btn_OrderByPrice" Width="70px" Margin="5" Click="Btn_OrderByPrice_Click">Цене</Button>
+            <Button x:Name="btn_OrderByCores" Width="150px" Margin="5" Click="Btn_OrderByCores_Click">Количеству ядер</Button>
+
+            <Button x:Name="btn_OrderByFrequency" Width="90px" Margin="5" Click="Btn_OrderByFrequency_Click" >Частоте</Button>
+            <Button x:Name="btn_OrderByFrequencyRAM" Width="150px" Margin="5" Click="Btn_OrderByFrequencyRAM_Click" >Частоте памяти</Button>
+            <Button x:Name="btn_OrderByTypeRAM" Width="120px" Margin="5" Click="Btn_OrderByTypeRAM_Click" >Типу памяти</Button>
+            <Button x:Name="btn_OrderByManufacturer" Width="150px" Margin="5" Click="Btn_OrderByManufacturer_Click" >Производителю</Button>
+        </WrapPanel>
+        <ListView Name="LViewProcesors"  Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -43,7 +62,6 @@
                         </StackPanel>
                         <TextBlock Text="{Binding Price, StringFormat={}{0} руб.}" Grid.Row="3" HorizontalAlignment="Center" FontSize="18px" FontStyle="Italic" Style="{StaticResource TextBlockStyle}"/>
                         
-                        <!-- <TextBlock Text="{Binding TicketsCount, StringFormat={}Билетов осталось: {0}}" Grid.Row="3" HorizontalAlignment="Right"/> -->
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

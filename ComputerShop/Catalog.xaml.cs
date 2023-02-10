@@ -34,5 +34,33 @@ namespace ComputerShop
             Manager.CurrentPageName = "Процессоры";
             CatalogItemFrame.Navigate(new Processors(conn));
         }
+
+        private void Btn_RAM_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.CurrentPageName = "Оперативная память";
+            //CatalogItemFrame.Navigate(new Processors(conn));
+        }
+
+        private void Btn_Videocards_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.CurrentPageName = "Видеокарты";
+            //CatalogItemFrame.Navigate(new Processors(conn));
+        }
+
+        private void Btn_DataStorage_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.CurrentPageName = "Накопители данных";
+           //CatalogItemFrame.Navigate(new Processors(conn));
+        }
+
+        private void Btn_AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Cart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

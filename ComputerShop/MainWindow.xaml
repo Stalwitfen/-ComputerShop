@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerShop"
         mc:Ignorable="d"
-        Title="Компьютерный магазин XUBOX" Height="450" Width="800" Icon="Resources/shopLogo_64.png" MinWidth="470" MinHeight="350">
+        Title="Компьютерный магазин XUBOX" Height="450" Width="800" Icon="Resources/shopLogo_64.png" MinWidth="700" MinHeight="450">
 
     <Grid>
         <Grid.RowDefinitions>
