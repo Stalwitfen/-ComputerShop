@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ComputerShop">
+
+    <Style x:Key="LabelStyle">
+        <Setter Property="Label.Foreground" Value="#B7D6D5" />  <!-- самый светлый, почти белый -->
+        <Setter Property="Label.HorizontalAlignment" Value="Center" />
+        <Setter Property="Label.FontSize" Value="36px" />
+    </Style>
+
+    <Style x:Key="TextBoxStyle">
+        <Setter Property="TextBox.Background" Value="#B7D6D5" /> 
+        <Setter Property="TextBox.Foreground" Value="#4F2B4C"/> <!-- самый темный, баклажановый -->
+    </Style>
+
+    <Style x:Key="TextBlockStyle">
+        <Setter Property="TextBlock.FontSize" Value="14px"/>
+        <Setter Property="TextBlock.Foreground" Value="#B7D6D5"/>
+    </Style>
+
+
+    <Style TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15"
+                            Background="{TemplateBinding Background}">
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Button.Background" Value="#B7D6D5" /> 
+        <Setter Property="Button.Foreground" Value="#4F2B4C" />
+        <Setter Property="Button.FontSize" Value="16" />
+        <Setter Property="Button.Height" Value="30" />
+        <Setter Property="Button.Margin" Value="0, 5" />
+    </Style>
+    
+
+</ResourceDictionary>
