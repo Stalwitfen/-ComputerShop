@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ComputerShop
 {
-    /// <summary>
-    /// Логика взаимодействия для Processors.xaml
-    /// </summary>
     public partial class Catalog : Page
     {
         MySqlConnection conn;
@@ -26,13 +23,13 @@ namespace ComputerShop
         {
             InitializeComponent();
             this.conn = conn;
-            CatalogItemFrame.Navigate(new Processors(conn));
+            CatalogItemFrame.Navigate(new ProcessorsPage(conn));
         }
 
         private void Btn_Processors_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Процессоры";
-            CatalogItemFrame.Navigate(new Processors(conn));
+            CatalogItemFrame.Navigate(new ProcessorsPage(conn));
         }
 
         private void Btn_RAM_Click(object sender, RoutedEventArgs e)

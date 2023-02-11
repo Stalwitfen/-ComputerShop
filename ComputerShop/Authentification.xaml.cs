@@ -50,12 +50,12 @@ namespace ComputerShop
             //try
             //{
                 Manager.Access = command.ExecuteScalar().ToString();
-                Manager.CurrentPageName = "Каталог";
+                Manager.CurrentPageName = "Процессоры";
                 NavigationService.Navigate(new Catalog(conn));
             //}         
             //catch (Exception err)
             //{
-                //WarningMessage.Show("Неверный логин или пароль!");
+            //    WarningMessage.Show("Неверный логин или пароль!");
             //}
         }
     }

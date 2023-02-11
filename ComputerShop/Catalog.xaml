@@ -28,7 +28,7 @@
             </StackPanel>
 
             <StackPanel Margin="15" Grid.Row="1" VerticalAlignment="Bottom">
-                <Button x:Name="btn_AddProduct" Click="Btn_AddProduct_Click">Добавить запись</Button>
+                <Button x:Name="btn_AddProduct" Click="Btn_AddProduct_Click" Visibility="{x:Static local:Manager.AdminButtonsVisibility}">Добавить запись</Button>
                 <Button x:Name="btn_Cart" Click="Btn_Cart_Click">Корзина</Button>
             </StackPanel>
         </Grid>
