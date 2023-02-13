@@ -25,7 +25,9 @@ namespace ComputerShop
         public MainWindow()
         {
             InitializeComponent();
+            Manager.CurrentPageName = "Авторизация";
             MainFrame.Navigate(new Authentification());
+            btn_Exit.Visibility = Visibility.Hidden;
 
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -34,13 +36,16 @@ namespace ComputerShop
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Manager.CurrentPageName = "";
+            Manager.CurrentPageName = "Авторизация";
             MainFrame.Navigate(new Authentification());
+            btn_Exit.Visibility = Visibility.Hidden;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             l_CurrentPage.Content = Manager.CurrentPageName;
+            if(Manager.CurrentPageName != "Авторизация")
+                btn_Exit.Visibility = Visibility.Visible;
         }
     }
 }

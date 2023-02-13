@@ -60,10 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Processor.cs" />
+    <Compile Include="SetProductPage.xaml.cs">
+      <DependentUpon>SetProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProcessorsPage.xaml.cs">
       <DependentUpon>ProcessorsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="WarningMessage.cs" />
+    <Page Include="SetProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Authentification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

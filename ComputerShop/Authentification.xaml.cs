@@ -18,9 +18,6 @@ using SqlConn;
 
 namespace ComputerShop
 {
-    /// <summary>
-    /// Логика взаимодействия для Authentification.xaml
-    /// </summary>
     public partial class Authentification : Page
     {
         private MySqlConnection conn = DBUtils.GetDBConnection();

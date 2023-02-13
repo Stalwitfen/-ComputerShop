@@ -52,7 +52,17 @@ namespace ComputerShop
 
         private void Btn_AddProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            switch(Manager.CurrentPageName)
+            {
+                case "Процессоры":
+                    {
+                        CatalogItemFrame.Navigate(new SetProductPage(conn, 1));
+                        break;
+                    }
+            }
+            
+            Manager.CurrentPageName = "Добавление товара";
+            
         }
 
         private void Btn_Cart_Click(object sender, RoutedEventArgs e)
