@@ -19,9 +19,12 @@ namespace ComputerShop
 
     public partial class SetProductPage : Page
     {
+        //there are 9 columns in the database in the Processors and Data Storage tables
+        //and 8 in Videocards and RAM, so the code had to be complicated with several checks
+
         private MySqlConnection conn;
-        private int? CPC;   //current product code, to shorter
-        private string productType;
+        private int CPC;   //current product code, to shorter
+        private string productType;     //it is also the name of the database table
 
         public SetProductPage(MySqlConnection conn, int currentProductCode)
         {
@@ -63,7 +66,7 @@ namespace ComputerShop
                 l_Char4.Content = "Скорость записи (Мб/с)";
             }
 
-            // if this is a change to an existing product
+            // set text boxes, if this is a change to an existing product
 
             if (CPC > 4)
             {
@@ -87,13 +90,9 @@ namespace ComputerShop
                         a++;
                     }
                     
-
                     tb_Manufacturer.Text = reader[a].ToString();
-                    a++;
-                    tb_Price.Text = reader[a].ToString();
-                    a++;
-                    cb_Availability.IsChecked = Convert.ToBoolean(reader[a]);
-
+                    tb_Price.Text = reader[a+1].ToString();
+                    cb_Availability.IsChecked = Convert.ToBoolean(reader[a+2]);
                     reader.Close();
                 }
 
@@ -106,9 +105,11 @@ namespace ComputerShop
 
         private void Btn_OK_Click(object sender, RoutedEventArgs e)
         {
+            bool succesfullExecution = true;
+
             string model = tb_Model.Text;
             string char1 = tb_Char1.Text;
-            string char2 = tb_Char2.Text;
+            string char2 = tb_Char2.Text.Replace(',', '.');        //to avoid an error in the float conversion
             string char3 = tb_Char3.Text;
             string char4 = tb_Char4.Text;
             string manufacturer = tb_Manufacturer.Text;
@@ -116,21 +117,41 @@ namespace ComputerShop
             int availability = Convert.ToInt32(cb_Availability.IsChecked);
 
             string query="";
-            int lastProductCode = Convert.ToInt32(new MySqlCommand("SELECT MAX(code) FROM " + productType, conn).ExecuteScalar());
+            int newProductCode = Convert.ToInt32(new MySqlCommand("SELECT MAX(code) FROM " + productType, conn).ExecuteScalar()) + 1;
 
-            if (CPC == 1)
+
+            if (CPC > 999)
             {
-                query = "INSERT INTO processors VALUES (" + (lastProductCode+1) + ", '"
-                                                          + model + "', '"
-                                                          + char1 + "', '"
-                                                          + char2 + "', '"
-                                                          + char3 + "', '"
-                                                          + char4 + "', '"
-                                                          + manufacturer + "', "
-                                                          + price + ", "
-                                                          + availability + ")";
+                newProductCode = CPC;
+
+                try
+                {
+                    query = "DELETE FROM " + productType + " WHERE code = " + newProductCode;
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.ExecuteScalar();
+                }
+                catch (Exception err)
+                {
+                    WarningMessage.Show("Ошибка! " + err);
+                    succesfullExecution = false;
+                }
+
             }
-            //else if ()
+
+            query = "INSERT INTO " + productType + " VALUES (" + (newProductCode) + ", '"
+                                                                + model + "', '"
+                                                                + char1 + "', '"
+                                                                + char2 + "', '"
+                                                                + char3 + "', '";
+
+            if (productType == "processors" || productType == "dataStorage")
+            {
+                query = query                                   + char4 + "', '";
+            }
+
+            query = query                                       + manufacturer + "', "
+                                                                + price + ", "
+                                                                + availability + ")";
 
             try
             {
@@ -139,9 +160,28 @@ namespace ComputerShop
             }
             catch (Exception err)
             {
-                //WarningMessage.Show("Неверно введены данные!");
-                WarningMessage.Show(err.ToString());
+                WarningMessage.Show("Неверно введены данные!");
+                //WarningMessage.Show(err.ToString());
+                succesfullExecution = false;
             }
+
+            if (succesfullExecution == true)
+            {
+                switch (productType)
+                {
+                    case "processors":
+                        {
+                            Manager.CurrentPageName = "Процессоры";
+                            NavigationService.Navigate(new ProcessorsPage(conn));
+                            break;
+                        }
+                        /// other
+                }
+            }
+            
+                
+                
+            
         }
     }
 }
