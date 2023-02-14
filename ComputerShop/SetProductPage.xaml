@@ -8,7 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SetProcessorPage">
 
-    <Grid>
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Label.Foreground" Value="#B7D6D5" />
+            <Setter Property="Label.HorizontalAlignment" Value="Center" />
+            <Setter Property="Label.VerticalAlignment" Value="Center" />
+            <Setter Property="Label.FontSize" Value="16px" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="0, 0, 0, 20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
@@ -22,7 +31,28 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Label>Модель</Label>
+        <Label x:Name="l_Char1" Grid.Row="1"/>
+        <Label x:Name="l_Char2" Grid.Row="2"/>
+        <Label x:Name="l_Char3" Grid.Row="3"/>
+        <Label x:Name="l_Char4" Grid.Row="4"/>
+        <Label Grid.Row="5">Производитель</Label>
+        <Label Grid.Row="6">Цена</Label>
+        <Label Grid.Row="7">Наличие</Label>
+
+        <TextBox x:Name="tb_Model" Grid.Row="0" Grid.Column="1" />
+        <TextBox x:Name="tb_Char1" Grid.Row="1" Grid.Column="1" />
+        <TextBox x:Name="tb_Char2" Grid.Row="2" Grid.Column="1" />
+        <TextBox x:Name="tb_Char3" Grid.Row="3" Grid.Column="1" />
+        <TextBox x:Name="tb_Char4" Grid.Row="4" Grid.Column="1" />
+        <TextBox x:Name="tb_Manufacturer" Grid.Row="5" Grid.Column="1" />
+        <TextBox x:Name="tb_Price" Grid.Row="6" Grid.Column="1" />
+        <CheckBox x:Name="cb_Availability" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+
+        <Button x:Name="btn_OK" Grid.Row="8" Grid.Column="1" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15, 0" Click="Btn_OK_Click">OK</Button>
     </Grid>
 </Page>

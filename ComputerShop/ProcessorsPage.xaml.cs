@@ -29,23 +29,31 @@ namespace ComputerShop
             InitializeComponent();
             this.conn = conn;
 
-            string query = "select code, model, cores, frequency, frequencyRAM, typeRAM, manufacturer, price, availability, imageurl from processors join companies on manufacturer = name";
-            MySqlCommand command = new MySqlCommand(query, conn);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                processorsList.Add(new Processor(Convert.ToInt32(reader[0]),
-                                                reader[1].ToString(),
-                                                Convert.ToInt32(reader[2]),
-                                                Convert.ToDouble(reader[3]),
-                                                Convert.ToInt32(reader[4]),
-                                                reader[5].ToString(),
-                                                reader[6].ToString(),
-                                                Convert.ToInt32(reader[7]),
-                                                Convert.ToBoolean(reader[8]),
-                                                reader[9].ToString() ));
+                string query = "select code, model, cores, frequency, frequencyRAM, typeRAM, manufacturer, price, availability, imageurl from processors join companies on manufacturer = name";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    processorsList.Add(new Processor(Convert.ToInt32(reader[0]),
+                                                    reader[1].ToString(),
+                                                    Convert.ToInt32(reader[2]),
+                                                    Convert.ToDouble(reader[3]),
+                                                    Convert.ToInt32(reader[4]),
+                                                    reader[5].ToString(),
+                                                    reader[6].ToString(),
+                                                    Convert.ToInt32(reader[7]),
+                                                    Convert.ToBoolean(reader[8]),
+                                                    reader[9].ToString()));
+                }
+                reader.Close();
             }
-            reader.Close();
+
+            catch (Exception e)
+            {
+                WarningMessage.Show("Ошибка! " + e);
+            }
 
             LViewProcesors.ItemsSource = processorsList;
 
@@ -107,9 +115,18 @@ namespace ComputerShop
                     if (MessageBox.Show($"Вы точно хотите удалить {processorsList[i].Model} ?", "Удаление товара",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        string query = "DELETE FROM processors WHERE code = " + processorsList[i].Code;
-                        MySqlCommand command = new MySqlCommand(query, conn);
-                        command.ExecuteScalar();
+                        try
+                        {
+                            string query = "DELETE FROM processors WHERE code = " + processorsList[i].Code;
+                            MySqlCommand command = new MySqlCommand(query, conn);
+                            command.ExecuteScalar();
+                        }
+
+                        catch (Exception err)
+                        {
+                            WarningMessage.Show("Ошибка! " + err);
+                        }
+                        
 
                         processorsList.RemoveAt(i);
                     }    

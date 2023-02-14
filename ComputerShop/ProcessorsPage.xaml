@@ -15,7 +15,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="tb_Search" Grid.Row="0" Style="{StaticResource TextBoxStyle}" Margin="20, 15" TextChanged="Tb_Search_TextChanged"/>
+        <TextBox x:Name="tb_Search" Grid.Row="0" Margin="20, 15" TextAlignment="Left" TextChanged="Tb_Search_TextChanged"/>
         <WrapPanel Grid.Row="1">
             <Label Foreground="#B7D6D5" FontSize="16px" Margin="5">Сортировать по: </Label>
             <Button x:Name="btn_OrderByName" Width="100px" Margin="5" Click="Btn_OrderByName_Click">Названию</Button>

@@ -8,9 +8,13 @@
         <Setter Property="Label.FontSize" Value="36px" />
     </Style>
 
-    <Style x:Key="TextBoxStyle">
-        <Setter Property="TextBox.Background" Value="#B7D6D5" /> 
-        <Setter Property="TextBox.Foreground" Value="#4F2B4C"/> <!-- самый темный, баклажановый -->
+    <Style TargetType="TextBox">
+        <Setter Property="TextBox.Background" Value="#B7D6D5" />
+        <Setter Property="TextBox.Foreground" Value="#4F2B4C"/>
+        <Setter Property="TextBox.FontSize" Value="16px" />
+        <Setter Property="TextBox.TextAlignment" Value="Center" />
+        <Setter Property="TextBox.Margin" Value="15, 0" />
+        <Setter Property="TextBox.Height" Value="25px" />
     </Style>
 
     <Style x:Key="TextBlockStyle">

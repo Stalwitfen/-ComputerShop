@@ -10,8 +10,8 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center" Margin="30">
-            <TextBox x:Name="tb_loginInput" TextAlignment="Center" Margin="5" FontSize="16" Style="{StaticResource TextBoxStyle}">admin</TextBox>
-            <TextBox x:Name="tb_passwordInput" TextAlignment="Center" Margin="5" FontSize="16" Style="{StaticResource TextBoxStyle}">admin</TextBox>
+            <TextBox x:Name="tb_loginInput" Margin="5">admin</TextBox>
+            <TextBox x:Name="tb_passwordInput" Margin="5">admin</TextBox>
             <Button Content="Войти" Width="120px" Margin="20" Click="Button_Click" />
         </StackPanel>
     </Grid>
