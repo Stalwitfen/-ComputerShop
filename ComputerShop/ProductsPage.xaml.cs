@@ -29,12 +29,50 @@ namespace ComputerShop
 
             string query="";
 
-            if (Manager.CurrentPageName == "Процессоры")
+            switch (Manager.CurrentPageName)
             {
-                query = "select code, model, cores, frequency, frequencyRAM, typeRAM, manufacturer, " +
-                    "price, availability, imageurl from processors join companies on manufacturer = name";
+                case "Процессоры":
+                    {
+                        query = "SELECT code, model, cores, frequency, frequencyRAM, typeRAM, manufacturer, " +
+                                "price, availability, imageurl FROM processors JOIN companies ON manufacturer = name";
+                        Product.Char1Name = "Ядер (шт)";
+                        Product.Char2Name = "Частота (ГГц)";
+                        Product.Char3Name = "Частота памяти (МГц)";
+                        Product.Char4Name = "Тип памяти";
+                        break;
+                    }
+                case "Оперативная память":
+                    {
+                        query = "SELECT code, model, formFactor, type, capacity, frequency, manufacturer, " +
+                                "price, availability, imageurl FROM RAM JOIN companies ON manufacturer = name";
+                        Product.Char1Name = "Форм-фактор";
+                        Product.Char2Name = "Тип";
+                        Product.Char3Name = "Объём (Гб)";
+                        Product.Char4Name = "Частота (МГц)";
+                        break;
+                    }
+                case "Видеокарты":
+                    {
+                        query = "SELECT code, model, type, capacity, busWidth, chipManufacturer, manufacturer, " +
+                                "price, availability, imageurl FROM videocards JOIN companies ON manufacturer = name";
+                        Product.Char1Name = "Тип видеопамяти";
+                        Product.Char2Name = "Объём (Гб)";
+                        Product.Char3Name = "Разрядность шины";
+                        Product.Char4Name = "Производитель видеочипа";
+                        break;
+                    }
+                case "Накопители данных":
+                    {
+                        query = "SELECT code, model, type, capacity, readSpeed, writeSpeed, manufacturer, " +
+                                "price, availability, imageurl FROM dataStorage JOIN companies ON manufacturer = name";
+                        Product.Char1Name = "Тип";
+                        Product.Char2Name = "Объём (Гб)";
+                        Product.Char3Name = "Скорость чтения (Мб/с)";
+                        Product.Char4Name = "Скорость записи (Мб/с)";
+                        break;
+                    }
             }
-            
+
             try
             {
                 
@@ -97,9 +135,27 @@ namespace ComputerShop
                     if (MessageBox.Show($"Вы точно хотите удалить {productsList[i].Model} ?", "Удаление товара",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+                        int CPC = productsList[i].Code;
+                        string productType="";
+                        if (CPC >= 1000 && CPC < 2000)
+                        {
+                            productType = "processors";
+                        }
+                        else if (CPC >= 2000 && CPC < 3000)
+                        {
+                            productType = "RAM";
+                        }
+                        else if (CPC >= 3000 && CPC < 4000)
+                        {
+                            productType = "videocards";
+                        }
+                        else if (CPC >= 4000 && CPC < 5000)
+                        {
+                            productType = "dataStorage";
+                        }
                         try
                         {
-                            string query = "DELETE FROM processors WHERE code = " + productsList[i].Code;
+                            string query = "DELETE FROM " + productType + " WHERE code = " + CPC;
                             MySqlCommand command = new MySqlCommand(query, conn);
                             command.ExecuteScalar();
                         }

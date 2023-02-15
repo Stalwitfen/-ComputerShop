@@ -29,40 +29,32 @@ namespace ComputerShop
             InitializeComponent();
 
             this.conn = conn;
+            
             CPC = currentProductCode; //to shorten
+
+            if (CPC == 1 || (CPC >= 1000 && CPC < 2000))
+            {
+                productType = "processors";
+            }
+            else if (CPC == 2 || (CPC >= 2000 && CPC < 3000))
+            {
+                productType = "RAM";
+            }
+            else if (CPC == 3 || (CPC >= 3000 && CPC < 4000))
+            {
+                productType = "videocards";
+            }
+            else if (CPC == 4 || (CPC >= 4000 && CPC < 5000))
+            {
+                productType = "dataStorage";
+            }
 
             // set label content
 
-            if (CPC == 1 || (CPC >= 1000 && CPC < 2000))    //processor
-            {
-                productType = "processors";
-                l_Char1.Content = "Ядер (шт)";
-                l_Char2.Content = "Частота (ГГц)";
-                l_Char3.Content = "Частота памяти (МГц)";
-                l_Char4.Content = "Тип памяти";
-            }
-            else if (CPC == 2 || (CPC >= 2000 && CPC < 3000))   //RAM
-            {
-                productType = "RAM";
-                l_Char1.Content = "Тип";
-                l_Char2.Content = "Объём (Гб)";
-                l_Char3.Content = "Частота (МГц)";
-            }
-            else if (CPC == 3 || (CPC >= 3000 && CPC < 4000))   //videocard
-            {
-                productType = "videocards";
-                l_Char1.Content = "Тип видеопамяти";
-                l_Char2.Content = "Объём (Гб)";
-                l_Char3.Content = "Производитель видеочипа";
-            }
-            else if (CPC == 4 || (CPC >= 4000 && CPC < 5000))   //data storage
-            {
-                productType = "dataStorage";
-                l_Char1.Content = "Тип";
-                l_Char2.Content = "Объём (Гб)";
-                l_Char3.Content = "Скорость чтения (Мб/с)";
-                l_Char4.Content = "Скорость записи (Мб/с)";
-            }
+            l_Char1.Content = Product.Char1Name;
+            l_Char2.Content = Product.Char2Name;
+            l_Char3.Content = Product.Char3Name;
+            l_Char4.Content = Product.Char4Name;
 
             // set text boxes, if this is a change to an existing product
 
@@ -108,7 +100,38 @@ namespace ComputerShop
             int availability = Convert.ToInt32(cb_Availability.IsChecked);
 
             string query="";
-            int newProductCode = Convert.ToInt32(new MySqlCommand("SELECT MAX(code) FROM " + productType, conn).ExecuteScalar()) + 1;
+            int newProductCode = 0;
+            try
+            {
+                newProductCode = Convert.ToInt32(new MySqlCommand("SELECT MAX(code) FROM " + productType, conn).ExecuteScalar()) + 1;
+            }
+            catch
+            {
+                switch (productType)
+                {
+                    case "processors":
+                        {
+                            newProductCode = 1000;
+                            break;
+                        }
+                    case "RAM":
+                        {
+                            newProductCode = 2000;
+                            break;
+                        }
+                    case "videocards":
+                        {
+                            newProductCode = 3000;
+                            break;
+                        }
+                    case "dataStorage":
+                        {
+                            newProductCode = 4000;
+                            break;
+                        }
+                }
+            }
+            
 
 
             if (CPC > 999)
@@ -158,11 +181,25 @@ namespace ComputerShop
                     case "processors":
                         {
                             Manager.CurrentPageName = "Процессоры";
-                            NavigationService.Navigate(new ProductsPage(conn));
                             break;
                         }
-                        /// other
+                    case "RAM":
+                        {
+                            Manager.CurrentPageName = "Оперативная память";
+                            break;
+                        }
+                    case "videocards":
+                        {
+                            Manager.CurrentPageName = "Видеокарты";
+                            break;
+                        }
+                    case "dataStorage":
+                        {
+                            Manager.CurrentPageName = "Накопители данных";
+                            break;
+                        }
                 }
+                NavigationService.Navigate(new ProductsPage(conn));
             }
             
                 

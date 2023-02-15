@@ -10,7 +10,7 @@ namespace ComputerShop
     class Product
     {
         public Product (int Code, string Model, string Char1Value, string Char2Value, string Char3Value, 
-                        string Char4Value,string Manufacturer, int Price, bool Availability, string ImageURL)
+                        string Char4Value, string Manufacturer, int Price, bool Availability, string ImageURL)
         {
             this.Code = Code;
             this.Model = Model;
@@ -69,27 +69,27 @@ namespace ComputerShop
         {
             get
             {
-                return Char1Name + ": " + Char1Value;
+                return Char2Name + ": " + Char2Value;
             }
         }
         public string Char3
         {
             get
             {
-                return Char1Name + ": " + Char1Value;
+                return Char3Name + ": " + Char3Value;
             }
         }
         public string Char4
         {
             get
             {
-                return Char1Name + ": " + Char1Value;
+                return Char4Name + ": " + Char4Value;
             }
         }
-        public string Char1Name { get; set; }
-        public string Char2Name { get; set; }
-        public string Char3Name { get; set; }
-        public string Char4Name { get; set; }
+        public static string Char1Name { get; set; }
+        public static string Char2Name { get; set; }
+        public static string Char3Name { get; set; }
+        public static string Char4Name { get; set; }
 
         private bool availability;
     }
