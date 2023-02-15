@@ -60,12 +60,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Processor.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="SetProductPage.xaml.cs">
       <DependentUpon>SetProductPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProcessorsPage.xaml.cs">
-      <DependentUpon>ProcessorsPage.xaml</DependentUpon>
+    <Compile Include="ProductsPage.xaml.cs">
+      <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="WarningMessage.cs" />
     <Page Include="SetProductPage.xaml">
@@ -101,7 +101,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProcessorsPage.xaml">
+    <Page Include="ProductsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,8 +19,6 @@ namespace ComputerShop
 
     public partial class SetProductPage : Page
     {
-        //there are 9 columns in the database in the Processors and Data Storage tables
-        //and 8 in Videocards and RAM, so the code had to be complicated with several checks
 
         private MySqlConnection conn;
         private int CPC;   //current product code, to shorter
@@ -81,18 +79,11 @@ namespace ComputerShop
                     tb_Char1.Text = reader[2].ToString();
                     tb_Char2.Text = reader[3].ToString();
                     tb_Char3.Text = reader[4].ToString();
+                    tb_Char4.Text = reader[5].ToString();
+                    tb_Manufacturer.Text = reader[6].ToString();
+                    tb_Price.Text = reader[7].ToString();
+                    cb_Availability.IsChecked = Convert.ToBoolean(reader[8]);
 
-                    int a = 5;
-
-                    if (productType == "processors" || productType == "dataStorage")
-                    {
-                        tb_Char4.Text = reader[a].ToString();
-                        a++;
-                    }
-                    
-                    tb_Manufacturer.Text = reader[a].ToString();
-                    tb_Price.Text = reader[a+1].ToString();
-                    cb_Availability.IsChecked = Convert.ToBoolean(reader[a+2]);
                     reader.Close();
                 }
 
@@ -142,14 +133,9 @@ namespace ComputerShop
                                                                 + model + "', '"
                                                                 + char1 + "', '"
                                                                 + char2 + "', '"
-                                                                + char3 + "', '";
-
-            if (productType == "processors" || productType == "dataStorage")
-            {
-                query = query                                   + char4 + "', '";
-            }
-
-            query = query                                       + manufacturer + "', "
+                                                                + char3 + "', '"
+                                                                + char4 + "', '"
+                                                                + manufacturer + "', "
                                                                 + price + ", "
                                                                 + availability + ")";
 
@@ -172,7 +158,7 @@ namespace ComputerShop
                     case "processors":
                         {
                             Manager.CurrentPageName = "Процессоры";
-                            NavigationService.Navigate(new ProcessorsPage(conn));
+                            NavigationService.Navigate(new ProductsPage(conn));
                             break;
                         }
                         /// other

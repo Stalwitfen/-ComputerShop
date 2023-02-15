@@ -1,4 +1,4 @@
-﻿<Page x:Class="ComputerShop.ProcessorsPage"
+﻿<Page x:Class="ComputerShop.ProductsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ComputerShop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProcessorsPage">
+      Title="ProductsPage">
 
     <Grid>
 
@@ -20,14 +20,9 @@
             <Label Foreground="#B7D6D5" FontSize="16px" Margin="5">Сортировать по: </Label>
             <Button x:Name="btn_OrderByName" Width="100px" Margin="5" Click="Btn_OrderByName_Click">Названию</Button>
             <Button x:Name="btn_OrderByPrice" Width="70px" Margin="5" Click="Btn_OrderByPrice_Click">Цене</Button>
-            <Button x:Name="btn_OrderByCores" Width="150px" Margin="5" Click="Btn_OrderByCores_Click">Количеству ядер</Button>
-
-            <Button x:Name="btn_OrderByFrequency" Width="90px" Margin="5" Click="Btn_OrderByFrequency_Click" >Частоте</Button>
-            <Button x:Name="btn_OrderByFrequencyRAM" Width="150px" Margin="5" Click="Btn_OrderByFrequencyRAM_Click" >Частоте памяти</Button>
-            <Button x:Name="btn_OrderByTypeRAM" Width="120px" Margin="5" Click="Btn_OrderByTypeRAM_Click" >Типу памяти</Button>
             <Button x:Name="btn_OrderByManufacturer" Width="150px" Margin="5" Click="Btn_OrderByManufacturer_Click" >Производителю</Button>
         </WrapPanel>
-        <ListView Name="LViewProcesors"  Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
+        <ListView Name="LViewProducts"  Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Style.Triggers>
@@ -71,10 +66,10 @@
                             </Image.Source>
                         </Image>
                         <StackPanel Grid.Row="3" Margin="0,10" >
-                            <TextBlock Text="{Binding Cores, StringFormat={}Ядер: {0}}" Style="{StaticResource TextBlockStyle}"/>
-                            <TextBlock Text="{Binding Frequency, StringFormat={}Частота {0:N1} ГГц}" Style="{StaticResource TextBlockStyle}"/>
-                            <TextBlock Text="{Binding FrequencyRAM, StringFormat={}Частота памяти: {0} МГц}" Style="{StaticResource TextBlockStyle}"/>
-                            <TextBlock Text="{Binding TypeRAM, StringFormat={}Тип памяти: {0}}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Char1}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Char2}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Char3}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{Binding Char4}" Style="{StaticResource TextBlockStyle}"/>
                             <TextBlock Text="{Binding Manufacturer, StringFormat={}Производитель: {0}}" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                         <TextBlock Text="{Binding Price, StringFormat={}{0} руб.}" Visibility="{Binding Visibility}" Grid.Row="4" HorizontalAlignment="Center" FontSize="18px" FontStyle="Italic" Style="{StaticResource TextBlockStyle}"/>

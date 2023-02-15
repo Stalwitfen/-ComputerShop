@@ -41,19 +41,20 @@ namespace ComputerShop
             string login = tb_loginInput.Text;
             string password = tb_passwordInput.Text;
 
-            string query = "select access from authentification where login = '" + login + "' and password = '" + password + "'";
+            string query = "SELECT access FROM authentification WHERE login = '" + login + "' and password = '" + password + "'";
             MySqlCommand command = new MySqlCommand(query, conn);
 
-            //try
-            //{
+            try
+            {
                 Manager.Access = command.ExecuteScalar().ToString();
                 Manager.CurrentPageName = "Процессоры";
                 NavigationService.Navigate(new Catalog(conn));
-            //}         
-            //catch (Exception err)
-            //{
-            //    WarningMessage.Show("Неверный логин или пароль!");
-            //}
+            }         
+            catch (Exception err)
+            {
+                WarningMessage.Show("Неверный логин или пароль!");
+                //WarningMessage.Show(err.ToString());
+            }
         }
     }
 }

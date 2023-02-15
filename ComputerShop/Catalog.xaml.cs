@@ -23,31 +23,31 @@ namespace ComputerShop
         {
             InitializeComponent();
             this.conn = conn;
-            CatalogItemFrame.Navigate(new ProcessorsPage(conn));
+            CatalogItemFrame.Navigate(new ProductsPage(conn));
         }
 
         private void Btn_Processors_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Процессоры";
-            CatalogItemFrame.Navigate(new ProcessorsPage(conn));
+            CatalogItemFrame.Navigate(new ProductsPage(conn));
         }
 
         private void Btn_RAM_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Оперативная память";
-            //CatalogItemFrame.Navigate(new Processors(conn));
+            CatalogItemFrame.Navigate(new ProductsPage(conn));
         }
 
         private void Btn_Videocards_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Видеокарты";
-            //CatalogItemFrame.Navigate(new Processors(conn));
+            CatalogItemFrame.Navigate(new ProductsPage(conn));
         }
 
         private void Btn_DataStorage_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Накопители данных";
-           //CatalogItemFrame.Navigate(new Processors(conn));
+            CatalogItemFrame.Navigate(new ProductsPage(conn));
         }
 
         private void Btn_AddProduct_Click(object sender, RoutedEventArgs e)
@@ -59,6 +59,21 @@ namespace ComputerShop
                 case "Процессоры":
                     {
                         CatalogItemFrame.Navigate(new SetProductPage(conn, 1));
+                        break;
+                    }
+                case "Оперативная память":
+                    {
+                        CatalogItemFrame.Navigate(new SetProductPage(conn, 2));
+                        break;
+                    }
+                case "Видеокарты":
+                    {
+                        CatalogItemFrame.Navigate(new SetProductPage(conn, 3));
+                        break;
+                    }
+                case "Накопители данных":
+                    {
+                        CatalogItemFrame.Navigate(new SetProductPage(conn, 4));
                         break;
                     }
                 default:
