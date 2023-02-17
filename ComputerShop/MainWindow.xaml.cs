@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,53 @@ namespace ComputerShop
             l_CurrentPage.Content = Manager.CurrentPageName;
             if(Manager.CurrentPageName != "Авторизация")
                 btn_Exit.Visibility = Visibility.Visible;
+        }
+
+        private void Btn_Print_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(MainGrid, "Печать");
+                }
+            }
+            catch (Exception err)
+            {
+                WarningMessage.Show("Ошибка!");
+            }
+            
+        }
+
+        private void Btn_Help_Click(object sender, RoutedEventArgs e)
+        {
+            //Process.Start("pack://application:,,,/Help.chm");
+            /*
+            using (Process myProcess = new Process())
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.StartInfo.FileName = "C:\\HelloWorld.exe";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.Start();
+            }
+            */
+            /*
+            Process pc = new Process();
+            pc.StartInfo.Verb = "runas";
+            pc.StartInfo.FileName = "cmd";
+            pc.StartInfo.Arguments = "echo ";
+            pc.Start();
+            */
+            /*
+            string commandText = @"C:/Users/Stalwitfen-PC/Documents/HelpNDoc/Output/chm/Help.chm";
+            var proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = commandText;
+            proc.StartInfo.UseShellExecute = true;
+            proc.Start();
+            */
+            Process.Start("C:/Users/Stalwitfen-PC/Documents/HelpNDoc/Output/chm/Help.chm");
         }
     }
 }

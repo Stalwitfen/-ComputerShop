@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Компьютерный магазин XUBOX" Height="450" Width="800" Icon="Resources/shopLogo_64.png" MinWidth="700" MinHeight="450">
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="70px"/>
             <RowDefinition Height="*"/>
@@ -15,7 +15,12 @@
         <Grid Grid.Row="0" Background="#556280">
             <Image Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,5" Source="Resources/shopLogo_740x574.png"/>
             <Label x:Name="l_CurrentPage" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-            <Button x:Name="btn_Exit" HorizontalAlignment="Right" Width="100" Margin="15" Click="Btn_Exit_Click">Выйти</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button x:Name="btn_Help" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Help_Click">&#63;</Button>
+                <Button x:Name="btn_Print" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Print_Click">&#128438;</Button>
+                <Button x:Name="btn_Exit" HorizontalAlignment="Right" Width="70" Margin="5" Click="Btn_Exit_Click">Выйти</Button>
+            </StackPanel>
+            
         </Grid>
         <Frame x:Name="MainFrame" Background="#4F2B4C" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
