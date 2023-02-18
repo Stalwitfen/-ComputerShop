@@ -61,7 +61,7 @@ namespace ComputerShop
 
         private void Btn_Help_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("C:/Program Files/ComputerShop/Help.chm");
+            Process.Start("C:/Program Files/ComputerShop/ComputerShopHelp.chm");
         }
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
