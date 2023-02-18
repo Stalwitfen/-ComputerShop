@@ -22,7 +22,7 @@
             <Button x:Name="btn_OrderByPrice" Width="70px" Margin="5" Click="Btn_OrderByPrice_Click">Цене</Button>
             <Button x:Name="btn_OrderByManufacturer" Width="150px" Margin="5" Click="Btn_OrderByManufacturer_Click" >Производителю</Button>
         </WrapPanel>
-        <ListView Name="LViewProducts"  Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
+        <ListView Name="LView_Products"  Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="#4F2B4C" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Style.Triggers>
@@ -47,10 +47,10 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
+                        <Button x:Name="btn_AddProduct" Click="Btn_AddProduct_Click"  Width="100px" Height="25px" Margin="0, 0, 5, 0" FontSize="14px" HorizontalAlignment="Left">В корзину</Button>
                         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button x:Name="btn_EditProduct" Click="Btn_EditProduct_Click" Width="25px" Height="25px" Margin="0, 0, 5, 0" Visibility="{x:Static local:Manager.AdminButtonsVisibility}" FontSize="14px">&#10000;</Button>
-                            <Button x:Name="btn_DelProduct" Click="Btn_DelProduct_Click" Width="25px" Height="25px" Margin="0" Visibility="{x:Static local:Manager.AdminButtonsVisibility}"  FontSize="14px">&#10006;</Button>
-                            
+                            <Button x:Name="btn_DelProduct" Click="Btn_DelProduct_Click" Width="25px" Height="25px" Margin="0" Visibility="{x:Static local:Manager.AdminButtonsVisibility}"  FontSize="14px">&#10060;</Button>
                         </StackPanel>
                         <TextBlock Text="{Binding Model}" Grid.Row="1" HorizontalAlignment="Center" FontSize="18px" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         <Image Width="200" Grid.Row="2" Stretch="UniformToFill" HorizontalAlignment="Center">

@@ -99,38 +99,38 @@ namespace ComputerShop
                 WarningMessage.Show("Ошибка! " + e);
             }
 
-            LViewProducts.ItemsSource = productsList;
+            LView_Products.ItemsSource = productsList;
 
         }
 
         private void Tb_Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            LViewProducts.ItemsSource = productsList.FindAll(p => (p.Model.ToLower().Contains(tb_Search.Text.ToLower())));
+            LView_Products.ItemsSource = productsList.FindAll(p => (p.Model.ToLower().Contains(tb_Search.Text.ToLower())));
         }
 
         private void Btn_OrderByName_Click(object sender, RoutedEventArgs e)
         {
             productsList = productsList.OrderBy(p => p.Model).ToList();
-            LViewProducts.ItemsSource = productsList;
+            LView_Products.ItemsSource = productsList;
         }
 
         private void Btn_OrderByPrice_Click(object sender, RoutedEventArgs e)
         {
             productsList = productsList.OrderBy(p => p.Price).ToList();
-            LViewProducts.ItemsSource = productsList;
+            LView_Products.ItemsSource = productsList;
         }
 
         private void Btn_OrderByManufacturer_Click(object sender, RoutedEventArgs e)
         {
             productsList = productsList.OrderBy(p => p.Manufacturer).ToList();
-            LViewProducts.ItemsSource = productsList;
+            LView_Products.ItemsSource = productsList;
         }
 
         private void Btn_DelProduct_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < productsList.Count; i++)
             {
-                if(i == LViewProducts.SelectedIndex)
+                if(i == LView_Products.SelectedIndex)
                 {
                     if (MessageBox.Show($"Вы точно хотите удалить {productsList[i].Model} ?", "Удаление товара",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -172,14 +172,19 @@ namespace ComputerShop
                 }
             }
             productsList = productsList.OrderBy(p => p.Code).ToList();
-            LViewProducts.ItemsSource = productsList; 
+            LView_Products.ItemsSource = productsList; 
         }
 
         private void Btn_EditProduct_Click(object sender, RoutedEventArgs e)
         {
             Manager.CurrentPageName = "Изменение товара";
-            int currentCode = productsList[LViewProducts.SelectedIndex].Code;
+            int currentCode = productsList[LView_Products.SelectedIndex].Code;
             NavigationService.Navigate(new SetProductPage(conn, currentCode));
+        }
+
+        private void Btn_AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Cart.shoppingList.Add(productsList[LView_Products.SelectedIndex]);
         }
     }
 

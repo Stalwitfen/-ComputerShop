@@ -35,13 +35,6 @@ namespace ComputerShop
             timer.Start();
         }
 
-        private void Btn_Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.CurrentPageName = "Авторизация";
-            MainFrame.Navigate(new Authentification());
-            btn_Exit.Visibility = Visibility.Hidden;
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             l_CurrentPage.Content = Manager.CurrentPageName;
@@ -68,32 +61,14 @@ namespace ComputerShop
 
         private void Btn_Help_Click(object sender, RoutedEventArgs e)
         {
-            //Process.Start("pack://application:,,,/Help.chm");
-            /*
-            using (Process myProcess = new Process())
-            {
-                myProcess.StartInfo.UseShellExecute = false;
-                // You can start any process, HelloWorld is a do-nothing example.
-                myProcess.StartInfo.FileName = "C:\\HelloWorld.exe";
-                myProcess.StartInfo.CreateNoWindow = true;
-                myProcess.Start();
-            }
-            */
-            /*
-            Process pc = new Process();
-            pc.StartInfo.Verb = "runas";
-            pc.StartInfo.FileName = "cmd";
-            pc.StartInfo.Arguments = "echo ";
-            pc.Start();
-            */
-            /*
-            string commandText = @"C:/Users/Stalwitfen-PC/Documents/HelpNDoc/Output/chm/Help.chm";
-            var proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = commandText;
-            proc.StartInfo.UseShellExecute = true;
-            proc.Start();
-            */
-            Process.Start("C:/Users/Stalwitfen-PC/Documents/HelpNDoc/Output/chm/Help.chm");
+            Process.Start("C:/Program Files/ComputerShop/Help.chm");
+        }
+
+        private void Btn_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.CurrentPageName = "Авторизация";
+            MainFrame.Navigate(new Authentification());
+            btn_Exit.Visibility = Visibility.Hidden;
         }
     }
 }

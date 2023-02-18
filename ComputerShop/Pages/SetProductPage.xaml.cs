@@ -19,9 +19,9 @@ namespace ComputerShop
 
     public partial class SetProductPage : Page
     {
-
+        
         private MySqlConnection conn;
-        private int CPC;   //current product code, to shorter
+        private int CPC;                //current product code, to shorter
         private string productType;     //it is also the name of the database table
 
         public SetProductPage(MySqlConnection conn, int currentProductCode)
@@ -131,8 +131,6 @@ namespace ComputerShop
                         }
                 }
             }
-            
-
 
             if (CPC > 999)
             {
@@ -170,7 +168,6 @@ namespace ComputerShop
             catch (Exception err)
             {
                 WarningMessage.Show("Неверно введены данные!");
-                //WarningMessage.Show(err.ToString());
                 succesfullExecution = false;
             }
 
@@ -201,10 +198,6 @@ namespace ComputerShop
                 }
                 NavigationService.Navigate(new ProductsPage(conn));
             }
-            
-                
-                
-            
         }
     }
 }

@@ -16,9 +16,9 @@
             <Image Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,5" Source="Resources/shopLogo_740x574.png"/>
             <Label x:Name="l_CurrentPage" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button x:Name="btn_Help" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Help_Click">&#63;</Button>
+                <Button x:Name="btn_Help" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Help_Click">?</Button>
                 <Button x:Name="btn_Print" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Print_Click">&#128438;</Button>
-                <Button x:Name="btn_Exit" HorizontalAlignment="Right" Width="70" Margin="5" Click="Btn_Exit_Click">Выйти</Button>
+                <Button x:Name="btn_Exit" HorizontalAlignment="Right" Width="30" Margin="5" Click="Btn_Exit_Click">&#10060;</Button>
             </StackPanel>
             
         </Grid>

@@ -21,15 +21,15 @@
             </Grid.RowDefinitions>
 
             <StackPanel Margin="15" Grid.Row="0">
-                <Button x:Name="btn_Processors" Click="Btn_Processors_Click">Процессоры</Button>
-                <Button x:Name="btn_RAM" Click="Btn_RAM_Click">Оперативная память</Button>
-                <Button x:Name="btn_Videocards" Click="Btn_Videocards_Click">Видеокарты</Button>
-                <Button x:Name="btn_DataStorage" Click="Btn_DataStorage_Click">Накопители данных</Button>
+                <Button x:Name="btn_Processors" Click="Btn_Processors_Click" Margin="0, 5">Процессоры</Button>
+                <Button x:Name="btn_RAM" Click="Btn_RAM_Click"  Margin="0, 5">Оперативная память</Button>
+                <Button x:Name="btn_Videocards" Click="Btn_Videocards_Click"  Margin="0, 5">Видеокарты</Button>
+                <Button x:Name="btn_DataStorage" Click="Btn_DataStorage_Click"  Margin="0, 5">Накопители данных</Button>
             </StackPanel>
 
             <StackPanel Margin="15" Grid.Row="1" VerticalAlignment="Bottom">
-                <Button x:Name="btn_AddProduct" Click="Btn_AddProduct_Click" Visibility="{x:Static local:Manager.AdminButtonsVisibility}">Добавить запись</Button>
-                <Button x:Name="btn_Cart" Click="Btn_Cart_Click">Корзина</Button>
+                <Button x:Name="btn_AddProduct" Click="Btn_AddProduct_Click"  Margin="0, 5" Visibility="{x:Static local:Manager.AdminButtonsVisibility}">Добавить запись</Button>
+                <Button x:Name="btn_Cart" Click="Btn_Cart_Click"  Margin="0, 5">Корзина</Button>
             </StackPanel>
         </Grid>
         

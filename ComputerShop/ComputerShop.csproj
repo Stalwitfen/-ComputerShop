@@ -60,23 +60,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Product.cs" />
-    <Compile Include="SetProductPage.xaml.cs">
+    <Compile Include="Classes\Cart.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Pages\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetProductPage.xaml.cs">
       <DependentUpon>SetProductPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProductsPage.xaml.cs">
+    <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WarningMessage.cs" />
-    <Page Include="SetProductPage.xaml">
+    <Compile Include="Classes\WarningMessage.cs" />
+    <Page Include="Pages\CartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Authentification.xaml">
+    <Page Include="Pages\SetProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DictionaryStyle.xaml">
+    <Page Include="Pages\Authentification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DictionaryStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,27 +96,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Authentification.xaml.cs">
+    <Compile Include="Pages\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DBMySQLUtils.cs" />
-    <Compile Include="DBUtils.cs" />
+    <Compile Include="Classes\DBMySQLUtils.cs" />
+    <Compile Include="Classes\DBUtils.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Catalog.xaml">
+    <Page Include="Pages\Catalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProductsPage.xaml">
+    <Page Include="Pages\ProductsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager.cs" />
-    <Compile Include="Catalog.xaml.cs">
+    <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Pages\Catalog.xaml.cs">
       <DependentUpon>Catalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -146,5 +154,6 @@
   <ItemGroup>
     <Resource Include="Resources\shopLogo_230.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

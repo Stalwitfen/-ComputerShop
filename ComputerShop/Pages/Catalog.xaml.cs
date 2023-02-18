@@ -87,7 +87,8 @@ namespace ComputerShop
 
         private void Btn_Cart_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.CurrentPageName = "Корзина";
+            CatalogItemFrame.Navigate(new CartPage());
         }
     }
 }
