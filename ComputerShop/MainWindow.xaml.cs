@@ -61,11 +61,20 @@ namespace ComputerShop
 
         private void Btn_Help_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("C:/Program Files/ComputerShop/ComputerShopHelp.chm");
+            try
+            {
+                Process.Start("C:/ComputerShopHelp.chm");
+            }
+            catch(Exception err)
+            {
+                WarningMessage.Show("Файл справки не найден");
+            }
+            
         }
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
+            Cart.shoppingList.Clear();
             Manager.CurrentPageName = "Авторизация";
             MainFrame.Navigate(new Authentification());
             btn_Exit.Visibility = Visibility.Hidden;

@@ -44,7 +44,7 @@ namespace ComputerShop
                 case "Оперативная память":
                     {
                         query = "SELECT code, model, formFactor, type, capacity, frequency, manufacturer, " +
-                                "price, availability, imageurl FROM RAM JOIN companies ON manufacturer = name";
+                                "price, availability, imageurl FROM ram JOIN companies ON manufacturer = name";
                         Product.Char1Name = "Форм-фактор";
                         Product.Char2Name = "Тип";
                         Product.Char3Name = "Объём (Гб)";
@@ -64,7 +64,7 @@ namespace ComputerShop
                 case "Накопители данных":
                     {
                         query = "SELECT code, model, type, capacity, readSpeed, writeSpeed, manufacturer, " +
-                                "price, availability, imageurl FROM dataStorage JOIN companies ON manufacturer = name";
+                                "price, availability, imageurl FROM datastorage JOIN companies ON manufacturer = name";
                         Product.Char1Name = "Тип";
                         Product.Char2Name = "Объём (Гб)";
                         Product.Char3Name = "Скорость чтения (Мб/с)";
@@ -143,7 +143,7 @@ namespace ComputerShop
                         }
                         else if (CPC >= 2000 && CPC < 3000)
                         {
-                            productType = "RAM";
+                            productType = "ram";
                         }
                         else if (CPC >= 3000 && CPC < 4000)
                         {
@@ -151,7 +151,7 @@ namespace ComputerShop
                         }
                         else if (CPC >= 4000 && CPC < 5000)
                         {
-                            productType = "dataStorage";
+                            productType = "datastorage";
                         }
                         try
                         {

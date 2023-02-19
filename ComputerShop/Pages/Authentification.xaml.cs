@@ -53,7 +53,6 @@ namespace ComputerShop
             catch (Exception err)
             {
                 WarningMessage.Show("Неверный логин или пароль!");
-                //WarningMessage.Show(err.ToString());
             }
         }
     }

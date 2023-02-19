@@ -38,7 +38,7 @@ namespace ComputerShop
             }
             else if (CPC == 2 || (CPC >= 2000 && CPC < 3000))
             {
-                productType = "RAM";
+                productType = "ram";
             }
             else if (CPC == 3 || (CPC >= 3000 && CPC < 4000))
             {
@@ -46,7 +46,7 @@ namespace ComputerShop
             }
             else if (CPC == 4 || (CPC >= 4000 && CPC < 5000))
             {
-                productType = "dataStorage";
+                productType = "datastorage";
             }
 
             // set label content
@@ -114,7 +114,7 @@ namespace ComputerShop
                             newProductCode = 1000;
                             break;
                         }
-                    case "RAM":
+                    case "ram":
                         {
                             newProductCode = 2000;
                             break;
@@ -124,7 +124,7 @@ namespace ComputerShop
                             newProductCode = 3000;
                             break;
                         }
-                    case "dataStorage":
+                    case "datastorage":
                         {
                             newProductCode = 4000;
                             break;
@@ -180,7 +180,7 @@ namespace ComputerShop
                             Manager.CurrentPageName = "Процессоры";
                             break;
                         }
-                    case "RAM":
+                    case "ram":
                         {
                             Manager.CurrentPageName = "Оперативная память";
                             break;
@@ -190,7 +190,7 @@ namespace ComputerShop
                             Manager.CurrentPageName = "Видеокарты";
                             break;
                         }
-                    case "dataStorage":
+                    case "datastorage":
                         {
                             Manager.CurrentPageName = "Накопители данных";
                             break;
